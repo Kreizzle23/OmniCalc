@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniCalc - Diameter Formulas</title>
+    <link rel="stylesheet" href="OmniCalcStyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+           <div class="logo">OmniCalc</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="diameter.html" class="active">Diameter</a></li>
+                <li><a href="area.html">Area</a></li>
+                <li><a href="volume.html">Volume</a></li>
+                <li><a href="perimeter.html">Perimeter</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <h2>Circle Diameter Calculators</h2>
+
+        <div class="calc-card">
+            <h3>Diameter from Radius</h3>
+            <p class="formula">Formula: d = 2r</p>
+            <input type="number" id="diam-radius" placeholder="Enter radius (r)">
+            <button onclick="calcDiameterFromRadius()">Solve</button>
+            <p class="output" id="out-diam-radius">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Diameter from Circumference</h3>
+            <p class="formula">Formula: d = c / &pi;</p>
+            <input type="number" id="diam-circum" placeholder="Enter circumference (c)">
+            <button onclick="calcDiameterFromCircum()">Solve</button>
+            <p class="output" id="out-diam-circum">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Diameter from Area</h3>
+            <p class="formula">Formula: d = 2 * &radic;(A / &pi;)</p>
+            <input type="number" id="diam-area" placeholder="Enter area (A)">
+            <button onclick="calcDiameterFromArea()">Solve</button>
+            <p class="output" id="out-diam-area">Output: </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OmniCalc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Helper function to format numbers cleanly (rounds to 4 decimal places if needed)
+        function formatResult(num) {
+            return Number(num.toFixed(4));
+        }
+
+        // 1. Calculate Diameter from Radius (d = 2 * r)
+        function calcDiameterFromRadius() {
+            const radiusInput = document.getElementById('diam-radius').value;
+            const outputElement = document.getElementById('out-diam-radius');
+            
+            if (radiusInput === '' || radiusInput < 0) {
+                outputElement.textContent = "Output: Please enter a valid positive number";
+                return;
+            }
+            
+            const diameter = radiusInput * 2;
+            outputElement.textContent = `Output: ${formatResult(diameter)}`;
+        }
+
+        // 2. Calculate Diameter from Circumference (d = c / pi)
+        function calcDiameterFromCircum() {
+            const circumInput = document.getElementById('diam-circum').value;
+            const outputElement = document.getElementById('out-diam-circum');
+            
+            if (circumInput === '' || circumInput < 0) {
+                outputElement.textContent = "Output: Please enter a valid positive number";
+                return;
+            }
+            
+            const diameter = circumInput / Math.PI;
+            outputElement.textContent = `Output: ${formatResult(diameter)}`;
+        }
+
+        // 3. Calculate Diameter from Area (d = 2 * sqrt(A / pi))
+        function calcDiameterFromArea() {
+            const areaInput = document.getElementById('diam-area').value;
+            const outputElement = document.getElementById('out-diam-area');
+            
+            if (areaInput === '' || areaInput < 0) {
+                outputElement.textContent = "Output: Please enter a valid positive number";
+                return;
+            }
+            
+            const diameter = 2 * Math.sqrt(areaInput / Math.PI);
+            outputElement.textContent = `Output: ${formatResult(diameter)}`;
+        }
+    </script>
+</body>
+</html>

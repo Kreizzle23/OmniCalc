@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniCalc - Area Calculators</title>
+    <link rel="stylesheet" href="OmniCalcStyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">OmniCalc</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="diameter.html">Diameter</a></li>
+                <li><a href="area.html" class="active">Area</a></li>
+                <li><a href="volume.html">Volume</a></li>
+                <li><a href="perimeter.html">Perimeter</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <h2>Area Calculators</h2>
+
+        <div class="calc-card">
+            <h3>Rectangle</h3>
+            <p class="formula">Formula: A = w * l</p>
+            <input type="number" id="rect-w" placeholder="Width">
+            <input type="number" id="rect-l" placeholder="Length">
+            <button onclick="areaRectangle()">Solve</button>
+            <p class="output" id="out-area-rect">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Square</h3>
+            <p class="formula">Formula: A = a&sup2;</p>
+            <input type="number" id="sq-side" placeholder="Side length">
+            <button onclick="areaSquare()">Solve</button>
+            <p class="output" id="out-area-sq">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Triangle</h3>
+            <p class="formula">Formula: A = (b * h) / 2</p>
+            <input type="number" id="tri-b" placeholder="Base">
+            <input type="number" id="tri-h" placeholder="Height">
+            <button onclick="areaTriangle()">Solve</button>
+            <p class="output" id="out-area-tri">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Circle</h3>
+            <p class="formula">Formula: A = &pi;r&sup2;</p>
+            <input type="number" id="circ-r" placeholder="Radius">
+            <button onclick="areaCircle()">Solve</button>
+            <p class="output" id="out-area-circ">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Parallelogram</h3>
+            <p class="formula">Formula: A = b * h</p>
+            <input type="number" id="para-b" placeholder="Base">
+            <input type="number" id="para-h" placeholder="Height">
+            <button onclick="areaParallelogram()">Solve</button>
+            <p class="output" id="out-area-para">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Trapezoid</h3>
+            <p class="formula">Formula: A = ((a + b) / 2) * h</p>
+            <input type="number" id="trap-a" placeholder="Base A">
+            <input type="number" id="trap-b" placeholder="Base B">
+            <input type="number" id="trap-h" placeholder="Height">
+            <button onclick="areaTrapezoid()">Solve</button>
+            <p class="output" id="out-area-trap">Output: </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OmniCalc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Helper to keep formatting neat (up to 4 decimal places)
+        function formatResult(num) {
+            return Number(num.toFixed(4));
+        }
+
+        // 1. Rectangle Area (A = w * l)
+        function areaRectangle() {
+            const w = parseFloat(document.getElementById('rect-w').value);
+            const l = parseFloat(document.getElementById('rect-l').value);
+            const output = document.getElementById('out-area-rect');
+
+            if (isNaN(w) || isNaN(l) || w <= 0 || l <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(w * l)}`;
+        }
+
+        // 2. Square Area (A = a^2)
+        function areaSquare() {
+            const a = parseFloat(document.getElementById('sq-side').value);
+            const output = document.getElementById('out-area-sq');
+
+            if (isNaN(a) || a <= 0) {
+                output.textContent = "Output: Please enter a valid positive value";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(a * a)}`;
+        }
+
+        // 3. Triangle Area (A = (b * h) / 2)
+        function areaTriangle() {
+            const b = parseFloat(document.getElementById('tri-b').value);
+            const h = parseFloat(document.getElementById('tri-h').value);
+            const output = document.getElementById('out-area-tri');
+
+            if (isNaN(b) || isNaN(h) || b <= 0 || h <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult((b * h) / 2)}`;
+        }
+
+        // 4. Circle Area (A = pi * r^2)
+        function areaCircle() {
+            const r = parseFloat(document.getElementById('circ-r').value);
+            const output = document.getElementById('out-area-circ');
+
+            if (isNaN(r) || r <= 0) {
+                output.textContent = "Output: Please enter a valid positive value";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(Math.PI * r * r)}`;
+        }
+
+        // 5. Parallelogram Area (A = b * h)
+        function areaParallelogram() {
+            const b = parseFloat(document.getElementById('para-b').value);
+            const h = parseFloat(document.getElementById('para-h').value);
+            const output = document.getElementById('out-area-para');
+
+            if (isNaN(b) || isNaN(h) || b <= 0 || h <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(b * h)}`;
+        }
+
+        // 6. Trapezoid Area (A = ((a + b) / 2) * h)
+        function areaTrapezoid() {
+            const a = parseFloat(document.getElementById('trap-a').value);
+            const b = parseFloat(document.getElementById('trap-b').value);
+            const h = parseFloat(document.getElementById('trap-h').value);
+            const output = document.getElementById('out-area-trap');
+
+            if (isNaN(a) || isNaN(b) || isNaN(h) || a <= 0 || b <= 0 || h <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(((a + b) / 2) * h)}`;
+        }
+    </script>
+</body>
+</html>

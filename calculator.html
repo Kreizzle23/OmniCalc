@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniCalc - Standard Calculator</title>
+    <link rel="stylesheet" href="OmniCalcStyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+           <div class="logo">OmniCalc</div>
+           
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html" class="active">Calculator</a></li>
+                <li><a href="diameter.html">Diameter</a></li>
+                <li><a href="area.html">Area</a></li>
+                <li><a href="volume.html">Volume</a></li>
+                <li><a href="perimeter.html">Perimeter</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="calc-container">
+        <h2>Standard Calculator</h2>
+        <div class="standard-calc">
+            <input type="text" id="calc-display" readonly placeholder="0">
+            <div class="calc-buttons">
+                <button onclick="clearCalc()" class="btn-clear">C</button>
+                <button onclick="inputCalc('(')">(</button>
+                <button onclick="inputCalc(')')">)</button>
+                <button onclick="inputCalc('/')">/</button>
+
+                <button onclick="inputCalc('7')">7</button>
+                <button onclick="inputCalc('8')">8</button>
+                <button onclick="inputCalc('9')">9</button>
+                <button onclick="inputCalc('*')">*</button>
+
+                <button onclick="inputCalc('4')">4</button>
+                <button onclick="inputCalc('5')">5</button>
+                <button onclick="inputCalc('6')">6</button>
+                <button onclick="inputCalc('-')">-</button>
+
+                <button onclick="inputCalc('1')">1</button>
+                <button onclick="inputCalc('2')">2</button>
+                <button onclick="inputCalc('3')">3</button>
+                <button onclick="inputCalc('+')">+</button>
+
+                <button onclick="inputCalc('0')">0</button>
+                <button onclick="inputCalc('.')">.</button>
+                <button onclick="inputPercent()">%</button>
+                <button onclick="solveCalc()" class="btn-equal">=</button>
+
+                <button onclick="calcSpecial('sqrt')" class="btn-wide">&radic; (Sqrt)</button>
+                <button onclick="inputCalc('**')" class="btn-wide">^ (Exp)</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OmniCalc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const display = document.getElementById('calc-display');
+
+        function inputCalc(value) {
+            if (display.value === 'Error') {
+                display.value = '';
+            }
+            display.value += value;
+        }
+
+        function clearCalc() {
+            display.value = '';
+        }
+
+        function solveCalc() {
+            try {
+                if (display.value.trim() === '') return;
+                let result = Function(`"use strict"; return (${display.value})`)();
+                display.value = result;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        function inputPercent() {
+            try {
+                if (display.value) {
+                    let currentVal = Function(`"use strict"; return (${display.value})`)();
+                    display.value = currentVal / 100;
+                }
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+
+        function calcSpecial(type) {
+            try {
+                if (display.value) {
+                    let currentVal = Function(`"use strict"; return (${display.value})`)();
+                    if (type === 'sqrt') {
+                        if (currentVal < 0) {
+                            display.value = 'Error';
+                        } else {
+                            display.value = Math.sqrt(currentVal);
+                        }
+                    }
+                }
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>

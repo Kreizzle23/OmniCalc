@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SAMPLE JAVASCRIPT</title>
+        <script>
+            function myFunction() {
+                document.getElementById("demo").innerHTML = "Mikasa's sword that beheaded Ereehh!!";
+            }
+
+            function myName() {
+                document.getElementById("name").innerHTML = "My name is Kreizzle but they call me Krizzel";
+            }
+      
+            let firstnumber = 15;
+            let secondnumber = 5;
+            let sum = firstnumber + secondnumber;
+            let difference = firstnumber - secondnumber;
+            let product = firstnumber * secondnumber;
+            let quotient = firstnumber / secondnumber;
+
+
+            function mySum() {
+                document.getElementById("add").innerHTML = "The sum is " + sum;
+            }
+
+            function myDifference() {
+                document.getElementById("subtract").innerHTML = "The difference is " + difference;
+            }
+
+            function myProduct() {
+                document.getElementById("multiply").innerHTML = "The product is " + product;
+            }
+
+            function myQuotient() {
+                document.getElementById("dividing").innerHTML = "The quotient is " + quotient;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>SAMPLE JAVASCRIPT</h1>
+        <p id="demo">Text will show here</p>
+        <button type="button" onclick="myFunction()">Click Me!!!</button>
+
+        <p id="name">Name will show here</p>
+        <button type="button" onclick="myName()">Show ME!!!</button>
+
+        <p id="add">SUM will show here</p>
+        <button type="button" onclick="mySum()">Calculate SUM</button>
+
+        <p id="subtract">SUBTRACTION will show here</p>
+        <button type="button" onclick="myDifference()">Calculate Difference</button>
+
+        <p id="multiply">MULTIPLICATION will show here</p>
+        <button type="button" onclick="myProduct()">Calculate Product</button>
+
+        <p id="dividing">DIVISION will show here</p>
+        <button type="button" onclick="myQuotient()">Calculate Quotient</button>
+    </body>
+</html>

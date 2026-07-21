@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniCalc - Volume Calculators</title>
+    <link rel="stylesheet" href="OmniCalcStyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">OmniCalc</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="diameter.html">Diameter</a></li>
+                <li><a href="area.html">Area</a></li>
+                <li><a href="volume.html" class="active">Volume</a></li>
+                <li><a href="perimeter.html">Perimeter</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <h2>Volume Calculators</h2>
+
+        <div class="calc-card">
+            <h3>Cube</h3>
+            <p class="formula">Formula: V = s&sup3;</p>
+            <input type="number" id="cube-s" placeholder="Edge length">
+            <button onclick="volCube()">Solve</button>
+            <p class="output" id="out-vol-cube">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Cylinder</h3>
+            <p class="formula">Formula: V = &pi;r&sup2;h</p>
+            <input type="number" id="cyl-r" placeholder="Radius">
+            <input type="number" id="cyl-h" placeholder="Height">
+            <button onclick="volCylinder()">Solve</button>
+            <p class="output" id="out-vol-cyl">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Cone</h3>
+            <p class="formula">Formula: V = &pi;r&sup2;(h/3)</p>
+            <input type="number" id="cone-r" placeholder="Radius">
+            <input type="number" id="cone-h" placeholder="Height">
+            <button onclick="volCone()">Solve</button>
+            <p class="output" id="out-vol-cone">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Sphere</h3>
+            <p class="formula">Formula: V = (4/3)&pi;r&sup3;</p>
+            <input type="number" id="sph-r" placeholder="Radius">
+            <button onclick="volSphere()">Solve</button>
+            <p class="output" id="out-vol-sph">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Rectangular Prism</h3>
+            <p class="formula">Formula: V = w * h * l</p>
+            <input type="number" id="prism-w" placeholder="Width">
+            <input type="number" id="prism-h" placeholder="Height">
+            <input type="number" id="prism-l" placeholder="Length">
+            <button onclick="volPrism()">Solve</button>
+            <p class="output" id="out-vol-prism">Output: </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OmniCalc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Helper to keep formatting neat (up to 4 decimal places)
+        function formatResult(num) {
+            return Number(num.toFixed(4));
+        }
+
+        // 1. Cube Volume (V = s^3)
+        function volCube() {
+            const s = parseFloat(document.getElementById('cube-s').value);
+            const output = document.getElementById('out-vol-cube');
+
+            if (isNaN(s) || s <= 0) {
+                output.textContent = "Output: Please enter a valid positive value";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(Math.pow(s, 3))}`;
+        }
+
+        // 2. Cylinder Volume (V = pi * r^2 * h)
+        function volCylinder() {
+            const r = parseFloat(document.getElementById('cyl-r').value);
+            const h = parseFloat(document.getElementById('cyl-h').value);
+            const output = document.getElementById('out-vol-cyl');
+
+            if (isNaN(r) || isNaN(h) || r <= 0 || h <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(Math.PI * Math.pow(r, 2) * h)}`;
+        }
+
+        // 3. Cone Volume (V = pi * r^2 * (h/3))
+        function volCone() {
+            const r = parseFloat(document.getElementById('cone-r').value);
+            const h = parseFloat(document.getElementById('cone-h').value);
+            const output = document.getElementById('out-vol-cone');
+
+            if (isNaN(r) || isNaN(h) || r <= 0 || h <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(Math.PI * Math.pow(r, 2) * (h / 3))}`;
+        }
+
+        // 4. Sphere Volume (V = (4/3) * pi * r^3)
+        function volSphere() {
+            const r = parseFloat(document.getElementById('sph-r').value);
+            const output = document.getElementById('out-vol-sph');
+
+            if (isNaN(r) || r <= 0) {
+                output.textContent = "Output: Please enter a valid positive value";
+                return;
+            }
+            output.textContent = `Output: ${formatResult((4 / 3) * Math.PI * Math.pow(r, 3))}`;
+        }
+
+        // 5. Rectangular Prism Volume (V = w * h * l)
+        function volPrism() {
+            const w = parseFloat(document.getElementById('prism-w').value);
+            const h = parseFloat(document.getElementById('prism-h').value);
+            const l = parseFloat(document.getElementById('prism-l').value);
+            const output = document.getElementById('out-vol-prism');
+
+            if (isNaN(w) || isNaN(h) || isNaN(l) || w <= 0 || h <= 0 || l <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(w * h * l)}`;
+        }
+    </script>
+</body>
+</html>

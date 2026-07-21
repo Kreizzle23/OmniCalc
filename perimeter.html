@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniCalc - Perimeter Calculators</title>
+    <link rel="stylesheet" href="OmniCalcStyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <div class="logo">OmniCalc</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="diameter.html">Diameter</a></li>
+                <li><a href="area.html">Area</a></li>
+                <li><a href="volume.html">Volume</a></li>
+                <li><a href="perimeter.html" class="active">Perimeter</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <h2>Perimeter & Circumference Calculators</h2>
+
+        <div class="calc-card">
+            <h3>Rectangle</h3>
+            <p class="formula">Formula: P = 2(l + w)</p>
+            <input type="number" id="per-rect-l" placeholder="Length">
+            <input type="number" id="per-rect-w" placeholder="Width">
+            <button onclick="perRectangle()">Solve</button>
+            <p class="output" id="out-per-rect">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Square</h3>
+            <p class="formula">Formula: P = 4a</p>
+            <input type="number" id="per-sq-s" placeholder="Side length">
+            <button onclick="perSquare()">Solve</button>
+            <p class="output" id="out-per-sq">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Triangle</h3>
+            <p class="formula">Formula: P = a + b + c</p>
+            <input type="number" id="per-tri-a" placeholder="Side A">
+            <input type="number" id="per-tri-b" placeholder="Side B">
+            <input type="number" id="per-tri-c" placeholder="Side C">
+            <button onclick="perTriangle()">Solve</button>
+            <p class="output" id="out-per-tri">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Circle (Circumference)</h3>
+            <p class="formula">Formula: C = 2&pi;r</p>
+            <input type="number" id="per-circ-r" placeholder="Radius">
+            <button onclick="perCircle()">Solve</button>
+            <p class="output" id="out-per-circ">Output: </p>
+        </div>
+
+        <div class="calc-card">
+            <h3>Parallelogram</h3>
+            <p class="formula">Formula: P = 2(a + b)</p>
+            <input type="number" id="per-para-a" placeholder="Side A">
+            <input type="number" id="per-para-b" placeholder="Base B">
+            <button onclick="perParallelogram()">Solve</button>
+            <p class="output" id="out-per-para">Output: </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OmniCalc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Helper to keep formatting neat (up to 4 decimal places)
+        function formatResult(num) {
+            return Number(num.toFixed(4));
+        }
+
+        // 1. Rectangle Perimeter (P = 2 * (l + w))
+        function perRectangle() {
+            const l = parseFloat(document.getElementById('per-rect-l').value);
+            const w = parseFloat(document.getElementById('per-rect-w').value);
+            const output = document.getElementById('out-per-rect');
+
+            if (isNaN(l) || isNaN(w) || l <= 0 || w <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(2 * (l + w))}`;
+        }
+
+        // 2. Square Perimeter (P = 4 * a)
+        function perSquare() {
+            const s = parseFloat(document.getElementById('per-sq-s').value);
+            const output = document.getElementById('out-per-sq');
+
+            if (isNaN(s) || s <= 0) {
+                output.textContent = "Output: Please enter a valid positive value";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(4 * s)}`;
+        }
+
+        // 3. Triangle Perimeter (P = a + b + c)
+        function perTriangle() {
+            const a = parseFloat(document.getElementById('per-tri-a').value);
+            const b = parseFloat(document.getElementById('per-tri-b').value);
+            const c = parseFloat(document.getElementById('per-tri-c').value);
+            const output = document.getElementById('out-per-tri');
+
+            if (isNaN(a) || isNaN(b) || isNaN(c) || a <= 0 || b <= 0 || c <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(a + b + c)}`;
+        }
+
+        // 4. Circle Circumference (C = 2 * pi * r)
+        function perCircle() {
+            const r = parseFloat(document.getElementById('per-circ-r').value);
+            const output = document.getElementById('out-per-circ');
+
+            if (isNaN(r) || r <= 0) {
+                output.textContent = "Output: Please enter a valid positive value";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(2 * Math.PI * r)}`;
+        }
+
+        // 5. Parallelogram Perimeter (P = 2 * (a + b))
+        function perParallelogram() {
+            const a = parseFloat(document.getElementById('per-para-a').value);
+            const b = parseFloat(document.getElementById('per-para-b').value);
+            const output = document.getElementById('out-per-para');
+
+            if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+                output.textContent = "Output: Please enter valid positive values";
+                return;
+            }
+            output.textContent = `Output: ${formatResult(2 * (a + b))}`;
+        }
+    </script>
+</body>
+</html>

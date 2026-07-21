@@ -1,0 +1,295 @@
+/* Core Styling Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f3ff; /* Very soft lavender background */
+    color: #352555; /* Deep purple-tinted text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation Menu */
+.navbar {
+    background-color: #2e1065; /* Deep royal purple */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    color: #c084fc; /* Bright lavender/purple logo */
+    font-size: 1.5rem;
+    font-weight: bold;
+   
+.navbar {
+    align-items: center;
+}
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: #e9d5ff; /* Light purple links */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #f3e8ff; /* White-purple glow on hover */
+    border-bottom: 2px solid #c084fc;
+}
+
+/* Banner Component */
+.banner {
+    background: linear-gradient(135deg, #4c1d95 0%, #2e1065 100%); /* Rich purple gradient */
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #f3e8ff;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    color: #ddd6fe; /* Muted soft purple */
+}
+
+/* Main Layout Setup */
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.intro-section {
+    background: rgb(255, 255, 255);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(76, 29, 149, 0.1); /* Subtle purple tint shadow */
+    border-left: 5px solid #6d28d9;
+}
+
+/* Grid Layout for Shape Tool Cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.grid-container h2 {
+    grid-column: 1 / -1;
+    color: #2e1065;
+    border-bottom: 2px solid #e9d5ff;
+    padding-bottom: 0.5rem;
+}
+
+/* Cards Design pattern */
+.calc-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(76, 29, 149, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border: 1px solid #f3e8ff;
+}
+
+.calc-card h3 {
+    color: #4c1d95;
+}
+
+.formula {
+    font-style: italic;
+    color: #5b21b6;
+    font-size: 0.9rem;
+    background: #f5f3ff;
+    padding: 0.25rem 0.5rem;
+    border-left: 3px solid #a855f7;
+}
+
+input[type="number"], input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd6fe;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #faf5ff;
+}
+
+input[type="number"]:focus, input[type="text"]:focus {
+    outline: 2px solid #a855f7;
+    background-color: #fff;
+}
+
+button {
+    background: #7c3aed; /* Vibrant medium purple */
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #6d28d9; /* Darker purple on hover */
+}
+
+.output {
+    font-weight: bold;
+    color: #2e1065;
+    margin-top: 0.5rem;
+}
+
+/* Standard Calculator Unique Page Styles */
+.calc-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.standard-calc {
+    background: #2e1065; /* Deep purple background */
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 10px 15px -3px rgba(46, 16, 101, 0.4);
+}
+
+#calc-display {
+    background: #1e1b4b; /* Dark indigo display */
+    color: #c084fc; /* Lavender numbers */
+    border: none;
+    text-align: right;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.calc-buttons button {
+    background: #4c1d95;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.calc-buttons button:hover {
+    background: #5b21b6;
+}
+
+.calc-buttons .btn-clear {
+    background: #b91c1c; /* Crimson for clear */
+}
+.calc-buttons .btn-clear:hover {
+    background: #991b1b;
+}
+
+.calc-buttons .btn-equal {
+    background: #9333ea; /* Bright purple for equal sign */
+}
+.calc-buttons .btn-equal:hover {
+    background: #7e22ce;
+}
+
+.calc-buttons .btn-wide {
+    grid-column: span 2;
+    font-size: 1rem;
+}
+
+/* About Page Styles */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.profile-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(76, 29, 149, 0.1);
+    text-align: center;
+    border-top: 6px solid #7c3aed;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid #a855f7;
+}
+
+.meta-info {
+    color: #6b21a8;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.profile-card h3 {
+    text-align: left;
+    margin-top: 1.5rem;
+    color: #2e1065;
+}
+
+.profile-card p {
+    text-align: left;
+    color: #4c1d95;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+.skills-list {
+    text-align: left;
+    margin-left: 1.5rem;
+    color: #4c1d95;
+    margin-top: 0.5rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e9d5ff;
+    margin: 1rem 0;
+}
+
+/* Footer Section */
+footer {
+    background-color: #
